@@ -1,0 +1,13 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+'C2_A1b
+'Display a message oce every second.
+
+DO
+DEBUG "Hello!", CR
+PAUSE 1000
+LOOP
+
+END
+

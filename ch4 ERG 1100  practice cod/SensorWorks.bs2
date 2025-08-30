@@ -1,0 +1,59 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+' Navigates based on values acquired with the
+' Check_Qtis subroutine.
+
+qtis  VAR  Nib        'black/white
+
+OUTB = %1111          'Set OUTB bits to 0
+
+
+
+DO
+
+    GOSUB  Check_Qtis     'Get QTI states
+
+    SELECT qtis           'Control servo
+                          'speeds/direction
+
+         CASE %1000       'Rotate Right
+         PULSOUT 13, 650
+         PULSOUT 12, 650
+         CASE %1100       'Pivot right
+         PULSOUT 13, 750
+         PULSOUT 12, 650
+         CASE %0100       'Curve right
+         PULSOUT 13, 800
+         PULSOUT 12, 650
+         CASE %0110       'Straight ahead
+         PULSOUT 13, 850
+         PULSOUT 12, 650
+         CASE %0010       'Curve left
+         PULSOUT 13, 850
+         PULSOUT 12, 700
+         CASE %0011       'Pivot left
+         PULSOUT 13, 850
+         PULSOUT 12, 750
+         CASE %0001       'Rotate left
+         PULSOUT 13, 850
+         PULSOUT 12, 850
+         CASE ELSE        'Do nothing
+           PAUSE 3
+    ENDSELECT
+LOOP
+
+  Check_Qtis:
+
+' Result -> qtis variable
+' 0 means white surface
+' 1 means black surface
+
+  DIRB = %1111            ' P7..P4 -> output
+  PAUSE 0                 ' Delay = 230 us
+  DIRB = %0000            ' P7..P4 -> input
+  PAUSE 0                 ' Delay = 230 us
+  qtis = INB              ' Store QTI outputs
+                          ' in INB
+
+  RETURN

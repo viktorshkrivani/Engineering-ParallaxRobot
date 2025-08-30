@@ -1,0 +1,39 @@
+' Ramp up, go forward, ramp down.
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+DEBUG "Program Running!"
+
+pulseCount VAR Word         'FOR...NExt loop counter
+
+
+FREQOUT 4, 2000, 3000       'Signal for start/reset
+
+
+'Ramp up forward
+
+FOR pulseCount = 1 TO 100        ' Loop ramps up for 100 pulses.
+  PULSOUT 13, 750 + pulseCount   ' Pulse = 1.5 ms + pulseCount.
+  PULSOUT 12, 650 - pulseCount   ' Pulse = 1.5 ms – pulseCount.
+  PAUSE 20                       ' Pause for 20 ms.
+NEXT
+
+
+' Continue forward for 75 pulses
+
+FOR pulseCount = 1 TO 75         ' Loop sends 75 forward pulses
+  PULSOUT 13, 850                ' 1.7 ms pulse to left servo
+  PULSOUT 12, 650                ' 1.3 ms pulse to right servo
+  PAUSE 20                       ' Pause for 20 ms
+NEXT
+
+' Ramp down from going forward to a full stop
+
+FOR pulseCount = 100 TO 1        ' Loop ramps down for 100 pulses
+  PULSOUT 13, 750 + pulseCount   ' Pulse = 1.5 ms + pulseCount
+  PULSOUT 12, 750 - pulseCount   ' Pulse = 1.5 ms - pulseCount
+  PAUSE 20                       ' Pause for 20 ms
+NEXT
+
+END                              ' Stop until reset.
+

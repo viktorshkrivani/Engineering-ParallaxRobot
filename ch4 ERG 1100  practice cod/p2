@@ -1,0 +1,41 @@
+'----[ON/OFF PROGRAM] ------------------------------------------------------------------------------------
+
+'Exam_2 Program 2 Example
+'Continually monitor the state of the normally open pushbutton.
+'March 19, 2024
+'Author: Viktor Shkrivani
+
+'----[ Directives ] --------------------------------------------------------------------------------------
+
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+
+'----[ Variable Definitions ] ----------------------------------------------------------------------------
+High_flag VAR Bit
+Counter VAR Bit
+
+'----[ Variable Initialization ] -------------------------------------------------------------------------
+High_flag = 0
+Counter = 0
+
+'----[ Main Rountine ] -----------------------------------------------------------------------------------
+
+DO
+ IF (IN3 = 1 AND High_Flag = 0) THEN 'Sense low to high input transition?
+  High_Flag = 1                      'YES - Set High_Flag
+  Counter = ~Counter                 'Increment Counter "~ displays only 0 and 1 for BIT (255 or 0 for Byte)
+  DEBUG ? Counter                    'Display Counter Values
+  IF Counter // 2 = 1 THEN           'Checks if Counter is odd
+     HIGH 14                         'Turns LED ON
+  ELSE
+    LOW 14                           'Turns LED OFF
+  ENDIF
+ ENDIF
+
+ IF (IN3 = 0) THEN                   'Sense low input?
+    High_Flag = 0                    'YES - Clar High_Flag
+ ENDIF                               'Turn OFF LED
+LOOP
+
+END

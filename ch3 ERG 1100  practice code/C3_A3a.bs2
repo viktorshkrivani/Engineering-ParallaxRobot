@@ -1,0 +1,10 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+DEBUG CLS, "Beep!!!"
+FREQOUT 4, 2000, 3000
+
+DO
+   DEBUG CR, "Waiting for reset..."
+   PAUSE 500
+LOOP

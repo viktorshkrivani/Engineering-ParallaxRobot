@@ -1,0 +1,54 @@
+'----[Radius Squared] -----------------------------------------------------------------
+
+'Exam_2 Program 1 Example
+'Determine if a point, P(x,y), lies WITHIN, ON, or OUTSIDE a circle of radius 5.
+'March 19, 2024
+'Author: Viktor Shkrivani
+
+'----[ Directives ] -------------------------------------------------------------------
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+'----[ Variable Definitions ]----------------------------------------------------------
+X VAR Word
+Y VAR Word
+Radius VAR Word
+Value VAR Byte
+
+'----[ Main Routine ]------------------------------------------------------------------
+DO
+  DEBUG "START CALCULATING", CR
+  DEBUG "This program checks if the value of a point P is part of a circle within a raidus 5.",CR
+  DEBUG "Also the porgram also determines if this point lies WHIHIN, ON, or OOUTSIDE the circle.",CR,CR,CR
+
+
+  DEBUG"Enter 1 to Run program or 2 to Quit", CR
+  DEBUGIN SDEC Value
+
+  IF value = 1 THEN
+
+    DEBUG CLS, CR
+    DEBUG "Enter X_value ",CR
+    DEBUGIN SDEC X
+    DEBUG CR
+    DEBUG "Enter Y_value ",CR
+    DEBUGIN SDEC Y
+    DEBUG CR
+    Value = (X*X)+(Y*Y)
+    DEBUG "The Radius Squared is: ",SDEC Value,CR, CR
+    IF Value < 25 THEN
+    DEBUG "Radius Squared is less than 25, lies INSIDE the circle", CR,CR,CR
+    ELSEIF Value = 25 THEN
+    DEBUG "Radius Squared equals 25. lios ON the circle", CR,CR,CR
+    ELSE
+    DEBUG "Radius Squared GRATER than 25 lies OUTSIDE the circle", CR,CR,CR
+    ENDIF
+  ELSE
+
+  DEBUG "Done"
+  END
+
+  ENDIF
+
+LOOP
+

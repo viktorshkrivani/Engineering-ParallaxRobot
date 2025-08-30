@@ -1,0 +1,17 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+'This program demostrates a simpel subroutine(method) call
+
+DEBUG "Before Subroutine", CR
+PAUSE 1000
+GOSUB My_Subroutine
+DEBUG "After Subroutine", CR
+END
+
+
+My_Subroutine:
+   DEBUG "Command is subroutine", CR
+   PAUSE 1000
+   RETURN
+ 'You should get the same set of three messages in the right order each time

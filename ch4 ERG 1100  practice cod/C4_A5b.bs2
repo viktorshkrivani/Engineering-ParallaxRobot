@@ -1,0 +1,23 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+'  This program demonstrates that a subroutine is a reusable block of commands.
+
+DO
+  GOSUB High_Pitch
+  DEBUG "Back in main", CR
+  PAUSE 1000
+  GOSUB Low_Pitch
+  DEBUG "Back in main", CR
+  PAUSE 1000
+  DEBUG "Repeat...", CR, CR
+LOOP
+
+High_Pitch:
+   DEBUG "High pitch", CR
+   FREQOUT 4, 2000, 3500
+   RETURN
+Low_Pitch:
+   DEBUG "Low pitch", CR
+   FREQOUT 4, 2000, 2000
+   RETURN

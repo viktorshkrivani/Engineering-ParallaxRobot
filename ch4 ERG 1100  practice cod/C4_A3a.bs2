@@ -1,0 +1,28 @@
+'Make the Boebot roll forward for one second
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+DEBUG "Program Running!"
+counter   VAR Word
+
+FREQOUT 4, 2000, 3000   'Signal program start/reset
+
+FOR counter = 1 TO 41  '1(second) / 0.024 s/pulse = 40.65 pulses/s
+
+  PULSOUT 13, 850
+  PULSOUT 12, 650
+  PAUSE 20
+NEXT
+
+END
+
+'calculate distance
+
+'time = 20in/9in(distance
+'time = 2.22s
+
+'we learned that it takes 24.6 ms (0.024 s) each time the two
+'servo PULSOUT AND one PAUSE commands are executed in a FOR…NEXT loop
+'A reciprocal is when you swap a fraction's numerator and denominator.
+'Another way TO take a reciprocal is TO divide a number OR fraction into the number one. In other
+'words, 1 ? 0.024 s/pulse = 40.65 pulses/s

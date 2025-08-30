@@ -1,0 +1,19 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+value         VAR     Word
+anotherValue  VAR     Word
+
+
+value = 500
+anotherValue = 2000
+
+DEBUG ? value
+DEBUG ? anotherValue
+
+value = 10 * anotherValue
+
+DEBUG ? value
+DEBUG ? anotherValue
+
+END

@@ -1,0 +1,16 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+' Robotics with the Boe-Bot - TestWhiskers.bs2
+' Display what the I/O pins connected to the whiskers sense.
+
+
+DEBUG "WHISKER STATES", CR,
+      "Left     Right", CR,
+      "------  ------"
+
+DO
+  DEBUG CRSRXY, 0, 3,
+        "P5 = ", BIN1 IN5,
+        "   P7 = ", BIN1 IN7
+  PAUSE 50
+LOOP

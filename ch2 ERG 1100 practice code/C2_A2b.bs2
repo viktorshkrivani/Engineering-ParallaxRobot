@@ -1,0 +1,16 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+'Robotics with the Boe-Bot,
+'Send a 0.13 second to the LED circuit connected to P13 every 2s.
+
+DEBUG "Program Running!"
+
+DO
+
+PULSOUT 13, 65000
+PAUSE 2000
+
+LOOP
+
+END

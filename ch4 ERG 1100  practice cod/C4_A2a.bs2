@@ -1,0 +1,23 @@
+'Robotics with the Boe-Bot - BoebotForwardTenSeconds
+'Make the Boe-Bot roll forward for ten seconds
+
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+DEBUG "Program Running!"
+
+counter  VAR Word
+
+FREQOUT 4, 2000, 3000      'Signal program start/reset
+
+FOR counter = 1 TO 107     ' Number of pulses - run time
+
+    PULSOUT 13, 850        ' Left servo full speed ccw
+    PULSOUT 12, 650        'Right Servo full speed cw
+    PAUSE 20
+NEXT
+END
+
+'Run the program, and watch closely to see if your Boe-Bot veers to the right or
+'left as it travels forwards FOR ten seconds
+

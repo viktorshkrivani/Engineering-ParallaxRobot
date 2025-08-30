@@ -1,0 +1,73 @@
+' Navigate using characters stored in EEPROM
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+DEBUG "Program Running!"
+
+' -----[ Variables ]----------------------------------------------------------
+
+purseCount      VAR   Word   ' Stores number of pulses.
+address         VAR   Byte   ' Store EEPROM address
+instruction     VAR   Byte   ' Stores EEPROM instructions
+
+' -----[ EEPROM Data ]--------------------------------------------------------
+'        Address: 0123456789  ' These two commented lines show
+'                 ||||||||||  ' EEPROM address of each datum
+DATA             "FLFFRBLBBQ" ' Navigation instructions
+'----- [ Initialization ] ----------------------------------------------------
+FREQOUT 4, 2000, 3000         ' Signal program start/reset
+'----- [ Main Routine ] ------------------------------------------------------
+
+DO UNTIL (intruction = "Q")
+
+  READ address, instruction   ' Data at address in instruction
+  address = address + 1       ' Add 1 to address for next read
+
+ SELECT instruction           ' CAll a different subroutine
+  CASE "F": GOSUB Forward     ' for each possible character
+  CASE "B": GOSUB Backward    ' that can be fetched from EEPROM
+  CASE "L": GOSUB Left_Turn
+  CASE "R": GOSUB Right_Turn
+ ENDSELECT
+LOOP
+END                           ' Stop executing until reset.
+
+' -----[ Subroutine - Forward ]-----------------------------------------------
+
+Forward:                      ' Forward subroutine.
+    FOR pulseCount = 1 TO 64  ' Send 64 forward pulses.
+      PULSOUT 13, 850         ' 1.7 ms pulse to left servo.
+      PULSOUT 12, 650         ' 1.3 ms pulse to right servo
+      PAUSE 20                ' Pause for 20 ms
+    NEXT
+    RETURN                    ' Return to Main Routine loop.
+
+' -----[ Subroutine - Backward ]----------------------------------------------
+
+Backward:                     ' Backward subroutine
+FOR pulseCount = 1 TO 64      ' Send 64 backward pulses.
+      PULSOUT 13, 850         ' 1.3 ms pulse to left servo.
+      PULSOUT 12, 650         ' 1.7 ms pulse to right servo
+      PAUSE 20                ' Pause for 20 ms
+    NEXT
+    RETURN                    ' Return to Main Routine loop.
+
+' -----[ Subroutine - Left_Turn ]---------------------------------------------
+
+Left_Turn:
+   FOR pulseCount = 1 TO 24   ' Send 24 left rotate pulses.
+      PULSOUT 13, 650         ' 1.3 ms pulse to left servo.
+      PULSOUT 12, 650         ' 1.3 ms pulse to right servo.
+      PAUSE 20                ' Pause for 20 ms.
+   NEXT
+   RETURN                     ' Return to Main Routine loop
+
+   ' -----[ Subroutine – Right_Turn ]--------------------------------------------
+
+Right_Turn:                   ' right turn subroutine.
+   FOR pulseCount = 1 TO 24   ' Send 24 right rotate pulses.
+      PULSOUT 13, 850         ' 1.7 ms pulse to left servo.
+      PULSOUT 12, 850         ' 1.7 ms pulse to right servo.
+      PAUSE 20                ' Pause for 20 ms.
+      NEXT
+      RETURN                  ' Return to Main Routine section.
