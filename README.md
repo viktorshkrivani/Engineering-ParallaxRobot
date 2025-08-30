@@ -10,7 +10,7 @@ Through this project, I demonstrated skills in **electronics, embedded programmi
 [Presentation PDF](Final%20Presentation.pdf)
 
 ## 🤖 Preview
-![Line Follower Demo](./assets/0830.gif)
+[Line Follower Demo](./assets/0830.gif)
 
 ## ⚙️ Technical Implementation
 
