@@ -9,6 +9,9 @@ Through this project, I demonstrated skills in **electronics, embedded programmi
 ## 📂 Contents of This Presentation
 [Presentation PDF](Final%20Presentation.pdf)
 
+## 🤖 Preview
+![Line Follower Demo](./assets/0830.mp4)
+
 ## ⚙️ Technical Implementation
 
 ### Hardware
