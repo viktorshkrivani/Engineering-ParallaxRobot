@@ -6,6 +6,8 @@ The robot was engineered to detect and follow electrical tape tracks by processi
 
 Through this project, I demonstrated skills in **electronics, embedded programming, control logic, and problem-solving** while pushing my motivation to achieve more than the basic requirements.
 
+## 📂 Contents of This Presentation
+[Presentation PDF](Final%20Presentation.pdf)
 
 ## ⚙️ Technical Implementation
 
@@ -68,11 +70,6 @@ This project represents more than just a line-following robot:
 - It shows **curiosity and drive** to go beyond the minimum requirements and explore advanced challenges.  
 
 By completing this project, I strengthened my foundation in robotics and confirmed my motivation to pursue **more advanced autonomous systems and engineering projects**.
-
-
-## 📂 Contents of This Presentation
-[Presentation PDF](Final%20Presentation.pdf)
-
 
 ##  For Me
 This line-follower robot is both a **technical achievement** and a **personal milestone** in my engineering journey.  
